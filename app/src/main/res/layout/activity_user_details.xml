@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_bg"
+    android:orientation="vertical"
+    tools:context=".fragments.main.UserDetailsFragment">
+
+
+    <ImageView
+        android:id="@+id/user_image_details_iv"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="8dp"
+        android:src="@drawable/downowneruser" />
+
+    <TextView
+        android:id="@+id/user_name_details_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="User Name"
+        android:textAlignment="center"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/user_type_details_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Dog walker"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_btn"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/user_phone_details_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Phone: "
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/user_info_details_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Info: "
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/user_address_details_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="Address: "
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/show_dogs_user_detailsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        android:text="Show dogs" />
+
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_bg"
+    android:orientation="vertical"
+    tools:context=".fragments.main.SettingsFragment">
+
+
+    <ImageView
+        android:id="@+id/user_image_settings_iv"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:padding="8dp"
+        android:src="@drawable/downowneruser" />
+
+    <EditText
+        android:id="@+id/user_name_settings_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="User Name"
+        android:textAlignment="center"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/user_type_details_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Dog walker"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary_btn"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/user_phone_settings_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone: "
+            android:inputType="phone"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+        <EditText
+            android:id="@+id/user_info_settings_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Info"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+
+        <EditText
+            android:id="@+id/user_address_settings_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address: "
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save_changes_settings_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="8dp"
+        android:text="Save changes" />
+
+
+</LinearLayout>

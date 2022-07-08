@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primary_bg"
+    android:gravity="center|top"
+    tools:context=".activities.AddDogActivity"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/dog_name_et_addDog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:hint="Enter dog name"
+        android:layout_marginHorizontal="32dp"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/dog_iv_addDog"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginVertical="8dp"
+        android:src="@drawable/addphoto" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_btn"
+            android:padding="4dp"
+            android:weightSum="2">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Age"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/dog_age_et_addDog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="4"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_btn"
+            android:padding="4dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Type"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/dog_type_et_addDog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Boxer"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_btn"
+            android:padding="4dp"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Other"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/dog_other_et_addDog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="..."
+                android:textAlignment="center"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_margin="64dp"
+            android:text="Add"
+            android:layout_height="wrap_content"
+            android:id="@+id/addNewDogBtnSubmit"/>
+    </LinearLayout>
+
+</LinearLayout>

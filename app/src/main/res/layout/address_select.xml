@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="400dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center|top"
+    android:background="@color/primary_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <fragment
+        android:id="@+id/map_address_select"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginVertical="8dp"
+        android:layout_weight="1.5"
+        tools:context=".fragments.main.SearchFragment" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:text="Click map location to select your location, and type in your address"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/address_select_et"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:hint="Enter address name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/addressSubmitBtn"
+            android:layout_marginHorizontal="8dp"
+            android:text="Submit" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/addressCloseBtn"
+            android:layout_marginHorizontal="8dp"
+            android:text="Close" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.dogwalker.fragments.main.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_userDetailsFragment"
+            app:destination="@id/userDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.dogwalker.fragments.main.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/dogsListFragment"
+        android:name="com.example.dogwalker.fragments.main.DogsListFragment"
+        android:label="fragment_dogs_list"
+        tools:layout="@layout/fragment_dogs_list" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.dogwalker.fragments.main.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_dogsListFragment"
+            app:destination="@id/dogsListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userDetailsFragment"
+        android:name="com.example.dogwalker.fragments.main.UserDetailsFragment"
+        android:label="activity_user_details"
+        tools:layout="@layout/activity_user_details" >
+        <action
+            android:id="@+id/action_userDetailsFragment_to_dogsListFragment"
+            app:destination="@id/dogsListFragment" />
+    </fragment>
+</navigation>
