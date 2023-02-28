@@ -8,8 +8,10 @@ import com.example.dogwalker.models.Dog;
 import com.example.dogwalker.models.DogOwner;
 import com.example.dogwalker.models.DogWalker;
 import com.example.dogwalker.models.User;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -94,8 +96,72 @@ public class FirebaseManager {
         }
     }
 
+    public static void setExtraPurchasedForUser(User user,
+                                              OnSuccessListener<User> userOnSuccessListener,
+                                              OnFailureListener onFailureListener) {
+        user.setExtraPurchased(true);
+        FirebaseDatabase.getInstance()
+                .getReference(USERS_PATH)
+                .child(user instanceof DogOwner ? USERS_DOGOWNER_PATH : USERS_DOGWALKER_PATH)
+                .child(user.getId())
+                .setValue(user)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()) {
+                            userOnSuccessListener.onSuccess(user);
+                        } else {
+                            onFailureListener.onFailure(task.getException());
+                        }
+                    }
+                });
+    }
+
+    public static void fetchSignedInUser(FirebaseAuth auth,
+                                         OnSuccessListener<User> userOnSuccessListener,
+                                         OnFailureListener onFailureListener) {
+        FirebaseDatabase.getInstance().getReference().child("Users")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String uid = auth.getUid();
+                        User user = null;
+
+                        for(DataSnapshot snapshotChild :snapshot.child("DogOwners").getChildren()) {
+                            DogOwner dogOwner = snapshotChild.getValue(DogOwner.class);
+
+                            if(dogOwner.getId().equals(uid)) {
+                                user = dogOwner;
+                                break;
+                            }
+                        }
+
+                        if(user == null) { // not found in DogOwners
+                            for(DataSnapshot snapshotChild :snapshot.child("DogWalkers").getChildren()) {
+                                DogWalker dogWalker = snapshotChild.getValue(DogWalker.class);
+
+                                if(dogWalker.getId().equals(uid)) {
+                                    user = dogWalker;
+                                    break;
+                                }
+                            }
+                        }
+
+                        userOnSuccessListener.onSuccess(user);
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        onFailureListener.onFailure(error.toException());
+                    }
+                });
+    }
+
     public static void addListenerToUserById(String uid, boolean dogOwner,
-                                             OnSuccessListener<User> userOnSuccessListener, OnFailureListener onFailureListener) {
+                                             OnSuccessListener<User> userOnSuccessListener,
+                                             OnFailureListener onFailureListener) {
         userValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -447,5 +513,7 @@ public class FirebaseManager {
     public static boolean isDogWalker() {
         return !isDogOwner();
     }
+
+
 
 }

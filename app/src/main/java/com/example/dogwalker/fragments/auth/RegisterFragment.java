@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -53,6 +54,10 @@ public class RegisterFragment extends BaseFragment {
     Uri selectedImageUri;
     Address selectedAddress;
     boolean dogWalkerRegistration;
+
+    //15.2
+    private CheckBox premium_account;
+
 
     protected ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), result -> {
@@ -102,6 +107,9 @@ public class RegisterFragment extends BaseFragment {
         profilePhotoIv = view.findViewById(R.id.photo_iv_register);
         selectAddressBtn = view.findViewById(R.id.selectAddressBtn);
         selectedAddressTv = view.findViewById(R.id.register_selected_address_tv);
+
+        //15.2
+         premium_account= view.findViewById(R.id.premium_account);
     }
 
     private void attachListeners() {
@@ -136,7 +144,9 @@ public class RegisterFragment extends BaseFragment {
                             null,
                             otherEt.getText().toString(),
                             Integer.parseInt(ageEt.getText().toString()),
-                            expEt.getText().toString()
+                            expEt.getText().toString(),
+                            premium_account.isChecked(),
+                            false
                     );
                 } else {
                     user = new DogOwner(
@@ -146,7 +156,9 @@ public class RegisterFragment extends BaseFragment {
                             emailEt.getText().toString(),
                             null,
                             otherEt.getText().toString(),
-                            Integer.parseInt(ageEt.getText().toString())
+                            Integer.parseInt(ageEt.getText().toString()),
+                            premium_account.isChecked(),
+                            false
                     );
                 }
                 showLoading("Signing you up...");

@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="92dp"
+        android:layout_marginBottom="10dp"
         android:text="My Dog List" />
 
     <Button
@@ -26,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="92dp"
+        android:layout_marginBottom="10dp"
         android:text="Dog Walker Searching" />
 
 
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="92dp"
+        android:layout_marginBottom="10dp"
         android:text="Settings" />
 
 
@@ -44,5 +47,14 @@
         android:layout_marginHorizontal="92dp"
         android:backgroundTint="#bd3333"
         android:text="Sign out" />
+    <FrameLayout
+        android:id="@+id/main_LAY_banner"
+
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
 
 </LinearLayout>

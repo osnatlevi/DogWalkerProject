@@ -10,8 +10,14 @@ public abstract class User {
     private String otherInfo;
     private String imageAddress;
     private int age;
+    //15.2
+    private boolean premium;
+    private boolean extraPurchased;
 
-    public User(String id, String fullName, String phoneNumber, Address address, String email, String imageAddress, String otherInfo, int age) {
+
+    public User(String id, String fullName, String phoneNumber, Address address,
+                String email, String imageAddress, String otherInfo, int age,
+                boolean extraPurchased) {
         this.fullName = fullName;
         this.id = id;
         this.imageAddress = imageAddress;
@@ -20,9 +26,13 @@ public abstract class User {
         this.email = email;
         this.otherInfo = otherInfo;
         this.age = age;
+        this.extraPurchased = extraPurchased;
     }
 
-    public User(String fullName, String phoneNumber, Address address, String email, String imageAddress, String otherInfo, int age) {
+    //15.2 add  this.premium = premium;
+    public User(String fullName, String phoneNumber, Address address, String email,
+                String imageAddress, String otherInfo, int age, boolean premium,
+                boolean extraPurchased) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.imageAddress = imageAddress;
@@ -30,13 +40,21 @@ public abstract class User {
         this.email = email;
         this.otherInfo = otherInfo;
         this.age = age;
+        this.premium = premium;
+        this.extraPurchased = extraPurchased;
     }
 
     // Firebase constructor
     public User() {
 
     }
+    public boolean isPremium() {
+        return premium;
+    }
 
+    public void setPremium(boolean premium) {
+        this.premium = premium;
+    }
     public String getImageAddress() {
         return imageAddress;
     }
@@ -99,5 +117,13 @@ public abstract class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public boolean isExtraPurchased() {
+        return extraPurchased;
+    }
+
+    public void setExtraPurchased(boolean extraPurchased) {
+        this.extraPurchased = extraPurchased;
     }
 }

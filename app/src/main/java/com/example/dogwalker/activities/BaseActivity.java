@@ -1,6 +1,7 @@
 package com.example.dogwalker.activities;
 
 import android.app.ProgressDialog;
+import android.text.Html;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         progressDialog.show();
     }
+
 
     protected void stopLoading() {
         if (progressDialog != null)

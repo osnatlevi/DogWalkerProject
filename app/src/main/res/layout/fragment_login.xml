@@ -9,13 +9,25 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+ <!--- text crash
+
+  <Button
+            android:id="@+id/crash_BTN"
+            android:layout_width="30dp"
+            android:layout_height="20dp"/>
+
+
+ -->
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -80,4 +92,52 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+
+        <Button
+            android:id="@+id/login_privacy_policy_BTN"
+            style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/secondary_bg"
+            android:drawablePadding="10dp"
+            android:paddingLeft="20dp"
+            android:text="Privacy Policy"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/login_terms_of_use_BTN"
+            style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/secondary_bg"
+            android:drawablePadding="10dp"
+            android:paddingLeft="20dp"
+            android:text="Terms Of Use"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/login_about_BTN"
+            style="@style/Widget.Material3.FloatingActionButton.Large.Primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/secondary_bg"
+            android:drawablePadding="10dp"
+            android:paddingLeft="20dp"
+            android:text="About"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+
 </LinearLayout>

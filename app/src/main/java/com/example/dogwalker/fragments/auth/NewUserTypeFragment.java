@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import com.example.dogwalker.R;
 import com.example.dogwalker.fragments.BaseFragment;
@@ -20,6 +21,10 @@ public class NewUserTypeFragment extends BaseFragment {
 
 
     Button dogOwnerBtn, dogWalkerBtn;
+
+
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,9 @@ public class NewUserTypeFragment extends BaseFragment {
     private void findViews(View view) {
         dogOwnerBtn = view.findViewById(R.id.toRegister_DogOwnerBtn);
         dogWalkerBtn = view.findViewById(R.id.toRegister_DogWalkerBtn);
+
+
+
     }
 
     private void attachListeners() {
@@ -58,5 +66,7 @@ public class NewUserTypeFragment extends BaseFragment {
             args.putBoolean(RegisterFragment.DOG_WALKER, true);
             navigate(R.id.action_newUserTypeFragment_to_registerFragment, args);
         });
+
+
     }
 }

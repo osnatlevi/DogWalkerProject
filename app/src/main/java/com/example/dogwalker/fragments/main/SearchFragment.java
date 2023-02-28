@@ -3,7 +3,6 @@ package com.example.dogwalker.fragments.main;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -20,7 +19,6 @@ import android.view.ViewGroup;
 import com.example.dogwalker.R;
 import com.example.dogwalker.firebase.FirebaseManager;
 import com.example.dogwalker.fragments.BaseFragment;
-import com.example.dogwalker.models.Address;
 import com.example.dogwalker.models.DogOwner;
 import com.example.dogwalker.models.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,7 +30,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.gson.Gson;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +40,9 @@ public class SearchFragment extends BaseFragment {
     LocationManager locationManager;
     LocationListener locationListener;
     GoogleMap googleMap;
+
+    int maxNumUsersAroundToDisplay = 0;
+    User signedInUser;
 
     @SuppressLint("MissingPermission")
     private OnMapReadyCallback callback = googleMap -> {
@@ -90,7 +91,8 @@ public class SearchFragment extends BaseFragment {
                 usersAround = new ArrayList<>();
                 usersAround.addAll(dogOwners);
                 googleMap.clear();
-                for (User user : usersAround) {
+                for(int i = 0; i < usersAround.size() && i < maxNumUsersAroundToDisplay; i++) {
+                    User user = usersAround.get(i);
                     Marker m = googleMap.addMarker(new MarkerOptions().position(new LatLng(
                             Double.parseDouble(user.getAddress().getLatitude()),
                             Double.parseDouble(user.getAddress().getLongtitude())
@@ -103,7 +105,9 @@ public class SearchFragment extends BaseFragment {
                 usersAround = new ArrayList<>();
                 usersAround.addAll(dogWalkers);
                 googleMap.clear();
-                for (User user : usersAround) {
+
+                for(int i = 0; i < usersAround.size() && i < maxNumUsersAroundToDisplay; i++) {
+                    User user = usersAround.get(i);
                     Marker m = googleMap.addMarker(new MarkerOptions().position(new LatLng(
                             Double.parseDouble(user.getAddress().getLatitude()),
                             Double.parseDouble(user.getAddress().getLongtitude())
@@ -126,16 +130,40 @@ public class SearchFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(callback);
-        }
+        setMaxNumUsersAroundToDisplayAndLoadMap();
     }
 
     public void centreMapOnLocation(Location location) {
         if (location == null || googleMap == null) return;
         LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 12));
+    }
+
+    private void setMaxNumUsersAroundToDisplayAndLoadMap() {
+        FirebaseManager.fetchSignedInUser(FirebaseAuth.getInstance(),
+                new OnSuccessListener<User>() {
+                    @Override
+                    public void onSuccess(User user) {
+                        SearchFragment.this.signedInUser = user;
+////////////
+                        if(//user.isPremium() ||
+                                user.isExtraPurchased()) {
+                            maxNumUsersAroundToDisplay = Integer.MAX_VALUE;
+                        } else {
+                            maxNumUsersAroundToDisplay = 1;
+                        }
+
+                        SupportMapFragment mapFragment =
+                                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+                        if (mapFragment != null) {
+                            mapFragment.getMapAsync(callback);
+                        }
+                    }
+                }, new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 }
